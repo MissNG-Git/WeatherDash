@@ -43,15 +43,15 @@ The following image demonstrates the application functionality:
 
 * View the current weather in the top section of the weather display and the 5-day forecast in the lower section; 
 ==> Relevant information displayed will include:
-- City Name
-- Date
-- Icon representation of weather conditions
-- Temperature
-- Humidity
-- Wind Speed
-- UV Index, color-coded
--- **GREEN** for *Favorable* conditions
--- **YELLOW** for *Moderate* conditions
--- **RED** for *Severe* conditions
+>1. City Name
+>2. Date
+>3. Icon representation of weather conditions
+>4. Temperature
+>5. Humidity
+>6. Wind Speed
+>7. UV Index, color-coded
+>  * **GREEN** for *Favorable* conditions
+>  * **YELLOW** for *Moderate* conditions
+>  * **RED** for *Severe* conditions
 
 * Click on a city in your search history list to review that city's information again 🌞
