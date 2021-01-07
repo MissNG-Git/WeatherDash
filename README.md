@@ -1,6 +1,6 @@
 # 06 Server-Side APIs: Weather Dashboard
 
-⊱───{{⋆⌘ஓ๑**\[[MissNG Weather Dash](https://missng-git.github.io/WeatherDash/)\]**๑ஓ⌘⋆}}───⊰
+⋘ ──── ∗ ⋅\[[MissNG Weather Dash](https://missng-git.github.io/WeatherDash/)\]⋅ ∗ ──── ⋙
 
 Using the [OpenWeather API](https://openweathermap.org/api) to retrieve weather data for cities, I have built a weather dashboard that will run in the browser and feature dynamically updated HTML and CSS, as well as utilising persistent data stored in a user's `localStorage`.
 
