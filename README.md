@@ -1,10 +1,12 @@
 # 06 Server-Side APIs: Weather Dashboard
 
-**[MissNG Weather Dash](https://missng-git.github.io/WeatherDash/)**
+╔═══*.·:·.✧  ─── ･ ｡ﾟ☆: *☽ * :☆ﾟ ───  ✦  ─── ･ ｡ﾟ☆: *☽ * :☆ﾟ ───  ✧.·:·.*═══╗
+════**[MissNG Weather Dash](https://missng-git.github.io/WeatherDash/)**════
+╚═══*.·:·.✧  ─── ･ ｡ﾟ☆: *☽ * :☆ﾟ ───  ✦  ─── ･ ｡ﾟ☆: *☽ * :☆ﾟ ───  ✧.·:·.*═══╝
 
 Using the [OpenWeather API](https://openweathermap.org/api) to retrieve weather data for cities, I have built a weather dashboard that will run in the browser and feature dynamically updated HTML and CSS, as well as utilising persistent data stored in a user's `localStorage`.
 
-## Objectives
+## ≫ ──── ≪•◦ Objectives ◦•≫ ──── ≪
 
 ```
 + Help travelers plan trips by retrieving weather data
@@ -12,13 +14,13 @@ Using the [OpenWeather API](https://openweathermap.org/api) to retrieve weather 
 + Provide user-friendly tool for global weather forecasts
 ```
 
-## Mock-Up
+## ≫ ──── ≪•◦ Mock-Up ◦•≫ ──── ≪
 
 The following image demonstrates the application functionality:
 
 ![weather dashboard demo](./Assets/IMGs/06-server-side-apis-homework-demo.png)
 
-### Overview of Code Functionality
+### ≫ ──── ≪•◦ Overview of Code Functionality ◦•≫ ──── ≪
 
 1. Application displays weather dashboard with form inputs.
 
@@ -34,7 +36,7 @@ The following image demonstrates the application functionality:
 
 7. Application displays last searched city forecast when user opens the weather dashboard.
 
-### Usability
+### ≫ ──── ≪•◦ Usability ◦•≫ ──── ≪
 
 * Click into text box of the "Search City or Postcode" section on the left of dashboard
 
@@ -49,9 +51,9 @@ The following image demonstrates the application functionality:
 >4. Temperature
 >5. Humidity
 >6. Wind Speed
->7. UV Index, color-coded
->  * **GREEN** for *Favorable* conditions
->  * **YELLOW** for *Moderate* conditions
->  * **RED** for *Severe* conditions
+>7. UV Index, color-coded:
+>\+\+ **GREEN** for *Favorable* conditions
+>\+\+ **YELLOW** for *Moderate* conditions
+>\+\+ **RED** for *Severe* conditions
 
-* Click on a city in your search history list to review that city's information again 🌞
+* Click on a city in your search history to review that city's information again 🌞
