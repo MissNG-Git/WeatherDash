@@ -38,41 +38,63 @@
   <body>
     <!-- Weather Data Retrive/Display-->
     <!-- Weather Dashboard Header-->
+    <header class="header1">
+      <h1 class="heading1">Weather Dashboard</h1>
+    </header>
 
-    <!-- Search Div -->
-      <!-- Search Text -->
-
-      <!-- Search Button: Magnifying Glass -->
-
-      <!-- Search Delete Button: Trash Can -->
-
-      <!-- Search History Buttons via JS, scrollable(?) -->
-
-    <!-- Current Weather Div -->
-      <!-- Weather Text: City = Search -->
-
-      <!-- Weather Icon -->
-
-      <!-- Weather Date (today's) -->
-
-      <!-- Weather Temp, Humidity, Wind Speed, UV Index -->
-
-    <!-- Weather for Week Div -->
-      <!-- 5-day forecase: Date, Icon, Temp & Humidity -->
-
-        <hr/>
-
-        <!-- FOOTER -->
-        <footer class="footer">
-          <div class="foot-box">
-            <div class="text-muted">
-              <p>Copyright © 2020 <strong>MissNG</strong><br>
-              All Rights Reserved</p>
-            </div>
+    <!-- Container for Divs-->
+    <main class="main-content container">
+      <div class="content-wrapper row">
+        <!-- Search Section: Form w/Label, Input & Buttons  -->
+        <section id="search-wrapper" class="search col-lg-3">
+          <form id="search-form" class="text-center">
+            <!-- Search Text -->
+            <label class="search-label" for="search-box">Search City or Postcode</label>
+            <input type="text" id="search-bar" name="search-box" class="form-control text-input" />
+            <!-- Search Button: Magnifying Glass -->
+            <button type="submit" form="search-form" id="search-button" class="btn btn-info btn-block">
+              Search <i class="fas fa-search"></i></button>
+            <!-- Search Delete Button: Trash Can -->
+            <button type="reset" form="search-form" id="dlt-btn" class="btn btn-danger btn-block">
+              Reset <i class="far fa-trash-alt"></i></button>
+          </form>
+          <!-- Search History Buttons via JS, scrollable(?) -->
+          <div id="search-history" class="history">
           </div>
-        </footer>
+        </section>
+
+        <!--  Weather Section -->
+        <section id="weather-wrapper" class="weather col-lg-9">
+          <!-- Current Weather Div: City = Search -->
+          <div id="current-weather" class="current">
+          <!-- Weather Icon -->
+
+          <!-- Weather Date (today's) -->
+
+          <!-- Weather Temp, Humidity, Wind Speed, UV Index -->
+
+          </div>
+
+          <!-- Weather Forecast Div -->
+          <!-- 5-day forecast: Date, Icon, Temp & Humidity -->
+          <div id="forecast-wrapper" class="forecast">
+          </div>
+        </section>
+        
       </div>
-    </div>
+    </main>
+
+    <hr/>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div class="foot-box">
+        <div class="text-muted">
+          <p>Copyright © 2020 <strong>MissNG</strong><br>
+          All Rights Reserved</p>
+        </div>
+      </div>
+    </footer>
 
     <!-- Link to Script -->
     <script src="Assets/JS/script.js"></script>
