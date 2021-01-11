@@ -1,69 +1,91 @@
 var apiKey = "&appid=f6e64506bbf2ed97516451a25d139a01";
-// Define global variables for API calls, user input & search history
 var weatherURL = "api.openweathermap.org/data/2.5/weather?q="
 var forecastURL = "api.openweathermap.org/data/2.5/forecast?q="
-var searchCity = "";
+var city = "";
+var queryCurrentURL = weatherURL + city + apiKey;
+var queryForecastURL = forecastURL + city + apiKey;
+console.log(queryCurrentURL);
+console.log(queryForecastURL);
 // Array for search History?
 var searchHistory = [];
+console.log(searchHistory);
+
 // !! Remember document ready & prevent defaults !!
-function initialise() {
-    localStorage();
-    searchClick();
-    resetClick();
-    historyClick();
-    currentWeather();
-    fiveDayForecast();
+
+// function initialise() {
+//     loadHistory();
+//     searchAction();
+//     resetClick();
+//     historyClick();
+//     weatherAPI();
+// }
+// // jQuery shorthand for document ready
+// $(function() {
+//     initialise();
+// });
+
+function loadHistory() {
+    // Get savedCities from localStorage; set to city var (empty array) if none
+    let savedCities = JSON.parse(window.localStorage.getItem("savedHistory")) || searchHistory;
+    savedCities.sort();
+    console.log(savedCities);
+    // Loop through city in array, create button that runs weatherAPI when clicked
+    savedCities.forEach(function(city) {
+        let btnEl = document.createElement("button");
+        btnEl.textcontent = city;
+        btnEl.setAttribute("id", "btnItems");
+        let searchList = document.getElementById("searchHistory");
+        searchList.appendChild(btnEl);
+        $("#btnItems").click(function(event) {
+            event.preventDeault();
+            city = $(this).text().trim();
+            weatherAPI();
+        })
+    })
 }
-// jQuery shorthand for document ready
-$(function() {
-    initialise();
-});
 
-// "click" eventListener for buttons
-    // Search button runs weather & forecast functions
-    currentWeather();
-    // Trash button deletes local storage data & resets search history
-    fiveDayForecast();
+function searchAction() {
+    $("#searchForm").submit(function(event) {
+        event.preventDeault();
+        city = $("#searchBar").val();
+        if(city.length <= 0) {
+            alert("Please enter a city name.");
+        }
+        else {
+            let savedCities = JSON.parse(window.localStorage.getItem("savedHistory")) || searchHistory;
+            searchHistory = {
+                city: city
+            }
+            savedCities.push(searchHistory);
+            window.localStorage.setItem("savedHistory", JSON.stringify(savedCities));
+        };
+    })
+}
 
-// Get searchHistory from localStorage data & store into array even on pg refresh
-function localStorage() {
-    let savedCities = JSON.parse(localStorage.getItem("cities"));
-    if (savedCities !== null) {
-        searchHistory = savedCities
-    }
-    // Create buttons of searchHistory
-    renderButtons();
-};
+// // "click" eventListener for buttons
+//     // Search button runs weather & forecast functions
+//     currentWeather();
+//     // Trash button deletes local storage data & resets search history
+//     fiveDayForecast();
 
-// Set items into localStorage to create list of searchHistory
-function searchHistory() {
-    localStorage.setItem("cities", JSON.stringify(searchHistory)); 
-};
 
 // currentWeather Function
-function currentWeather() {
-    // API call URL: Current Weather Data
+function weatherAPI() {
     
-    // API Ajax call
+    // Current Weather API Ajax call
     $.ajax({
         url: weatherURL,
         method: "GET"
     })
-    // Store response
-};
-
-// fiveDayForecast Function
-function fiveDayForecast() {
-    // API call URL: 5 Day
     
-    // API Ajax call
+    // Forecast API Ajax call
     $.ajax({
         url: forecastURL,
         method: "GET"
     })
-    // Store responses (x5 for each day)
-};
 
     // Temperature conversion
 
     // Append to HTML
+
+};
