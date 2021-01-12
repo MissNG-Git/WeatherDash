@@ -28,9 +28,26 @@ function loadHistory() {
     let savedCities = JSON.parse(window.localStorage.getItem("savedHistory")) || searchHistory;
     console.log(savedCities);
     if (savedCities !== null) {
-        searchHistory = savedCities
+        searchHistory = savedCities;
     }
     renderBtns();
+}
+
+function renderBtns () {
+    let cityList = [...new Set(searchHistory)];
+    console.log(cityList)
+    // Loop through array, create buttons for each city & run weatherAPI when clicked
+    for (let i = 0; i < cityList.length; i++) {
+        let btnEl = $("<button>");
+        btnEl.attr("id", "btnItems");
+        btnEl.text(cityList[i].city.toUpperCase());
+        $("#searchHistory").append(btnEl);
+        $("#btnItems").click(function(event) {
+            event.preventDefault();
+            city = $(this).text().trim();
+            weatherAPI();
+        });
+    }
 }
 
 // function searchAction() {
