@@ -76,12 +76,14 @@ function searchAction() {
     })
 }
 
-// // "click" eventListener for buttons
-//     // Search button runs weather & forecast functions
-//     currentWeather();
-//     // Trash button deletes local storage data & resets search history
-//     fiveDayForecast();
-
+// Trash button deletes local storage data & resets search history
+function resetClick() {
+    $("#dltBtn").click(function(event) {
+        event.preventDefault();
+        window.localStorage.removeItem("savedHistory");
+        $("#searchHistory").remove();
+    })
+};
 
 // currentWeather Function
 function weatherAPI() {
