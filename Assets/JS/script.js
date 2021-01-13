@@ -65,6 +65,7 @@ function searchAction() {
             // }
             $("#weatherHeader").text("Current Weather in " + city);
             $("form").trigger("reset");
+            // ADD IF STATEMENT FOR INPUT !== A VALID CITY!
             searchHistory.push(city);
             window.localStorage.setItem("savedHistory", JSON.stringify(searchHistory))
             savedCities = searchHistory;
@@ -90,22 +91,24 @@ function weatherAPI() {
     let queryCurrentURL = weatherURL + city + apiKey;
     let queryForecastURL = forecastURL + city + apiKey;
     console.log(queryCurrentURL);
-    console.log(queryForecastURL);
-    
+        
     // Current Weather API Ajax call
-    $.ajax({
-        url: queryCurrentURL,
-        method: "GET"
-      }).success(function(response) {
-        console.log(response);
-    })
-}      
-    
-    // Forecast API Ajax call
-    // $.ajax({
-    //     url: forecastURL,
-    //     method: "GET"
+    $.get(queryCurrentURL, function(response) {
+        let temp = Math.round((( response.main.temp - 273.15) * 9/5 + 32))
+        console.log("The temperature in " + city + " is: " + temp);
+        
+        $("#temp").text("Temperature: " + temp + String.fromCharCode(176)+"F");
+        $("#humidity").text("Humidity: " + response.main.humidity);
+        $("#wind").text("Wind Speed: " +  response.wind.speed);
+        // // Fix UV index
+        // $("#uv").text("UV Index: " +  ...);
+        $(".currentIcon").attr({"src": "http://openweathermap.org/img/wn/" + response.weather[0].icon + ".png"});    
+    });
+
+    // $.get(queryForecastURL, function(response) {
+        
     // });
+}      
 
     // Temperature conversion
 
