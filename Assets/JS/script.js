@@ -1,11 +1,4 @@
-var apiKey = "&appid=f6e64506bbf2ed97516451a25d139a01";
-var weatherURL = "api.openweathermap.org/data/2.5/weather?q=";
-var forecastURL = "api.openweathermap.org/data/2.5/forecast?q=";
 var city = "";
-var queryCurrentURL = weatherURL + city + apiKey;
-var queryForecastURL = forecastURL + city + apiKey;
-console.log(queryCurrentURL);
-console.log(queryForecastURL);
 // Array for search History?
 var searchHistory = [];
 
@@ -39,6 +32,7 @@ function renderBtns () {
         $("#searchHistory").append(btnEl);
     }
     historyClick();
+    weatherAPI();
 }
 
 function historyClick() {
@@ -54,28 +48,26 @@ function searchAction() {
     $("#searchBtn").click(function(event) {
         event.preventDefault();
         city = $("#searchBar").val().trim();
+        $("#currentWeather").text("Current Weather in " + city);
         // Change to modal if time permits...
         if(city.length <= 0) {
             alert("Please enter a city name.");
         }
         else {
-            // for (let i = 0; i < searchHistory.length; i++) {
-            //    // Limit list to only show last 10 search results
-            //     if (searchHistory.length > 10) {
-            //         console.log(searchHistory);
-            //         searchHistory[i].shift();
-            //     } 
+            // Limit list to only show last 10 search results
+            // if (searchHistory.length > 10) {
+            //     searchHistory.shift();
             // }
             $("form").trigger("reset");
             let savedCities = JSON.parse(window.localStorage.getItem("savedHistory")) || searchHistory;
             searchHistory = {
                 city: city
-            }
+            };
             savedCities.push(searchHistory);
             window.localStorage.setItem("savedHistory", JSON.stringify(savedCities));
-            searchHistory = savedCities
+            searchHistory = savedCities;
             renderBtns();
-            // weatherAPI();
+            weatherAPI();
         }
     });
 }
@@ -85,24 +77,34 @@ function resetClick() {
     $("#dltBtn").click(function(event) {
         event.preventDefault();
         window.localStorage.removeItem("savedHistory");
-        $("#searchHistory").remove();
+        $("#searchHistory", ).remove();
+        $("#currentWeather").remove();
     });
 }
 
 // currentWeather Function
 function weatherAPI() {
+    let apiKey = "&appid=f6e64506bbf2ed97516451a25d139a01";
+    let weatherURL = "api.openweathermap.org/data/2.5/weather?q=";
+    let forecastURL = "api.openweathermap.org/data/2.5/forecast?q=";
+    let queryCurrentURL = weatherURL + city + apiKey;
+    let queryForecastURL = forecastURL + city + apiKey;
+    console.log(queryCurrentURL);
+    console.log(queryForecastURL);
     
     // Current Weather API Ajax call
     $.ajax({
-        url: weatherURL,
+        url: queryCurrentURL,
         method: "GET"
+    }).then(function(current_data) {
+        console.log(current_data);
     });
     
     // Forecast API Ajax call
-    $.ajax({
-        url: forecastURL,
-        method: "GET"
-    });
+    // $.ajax({
+    //     url: forecastURL,
+    //     method: "GET"
+    // });
 
     // Temperature conversion
 
