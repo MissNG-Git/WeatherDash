@@ -1,11 +1,14 @@
 var city = "";
+var apiKey = "&appid=471ac66dcee7336c8919fa741ccc6ad6";
+var weatherURL = "api.openweathermap.org/data/2.5//weather?q=";
+var forecastURL = "api.openweathermap.org/data/2.5/forecast?q=";
 // Array for search History?
 var searchHistory = [];
 
 // !! Remember document ready & prevent defaults == shorthand? !!
 // Function calls on page load
 loadHistory();
-historyClick();
+listClick();
 searchAction();
 resetClick();
 
@@ -21,21 +24,23 @@ function loadHistory() {
 
 function renderBtns () {
     $("#searchHistory").html("");
-    if (searchHistory == null) {
+    if (searchHistory === null) {
         return;
     }
+    let newCities = [...new Set(searchHistory)]
     // Loop through array, create buttons for each city & run weatherAPI when clicked
-    for (let i = 0; i < searchHistory.length; i++) {
-        let btnEl = $("<button>");
-        btnEl.attr("id", "btnItems");
-        btnEl.text(searchHistory[i].city.toUpperCase());
+    for (let i = 0; i < newCities.length; i++) {
+        let cityName = newCities[i];
+        let btnEl = document.createElement("button");
+        btnEl.setAttribute("id", "btnItems");
+        btnEl.textContent = cityName;
+        console.log(cityName)
         $("#searchHistory").append(btnEl);
+        listClick();
     }
-    historyClick();
-    weatherAPI();
 }
 
-function historyClick() {
+function listClick() {
     $("#btnItems").click(function(event) {
         event.preventDefault();
         city = $(this).text().trim();
@@ -48,7 +53,6 @@ function searchAction() {
     $("#searchBtn").click(function(event) {
         event.preventDefault();
         city = $("#searchBar").val().trim();
-        $("#currentWeather").text("Current Weather in " + city);
         // Change to modal if time permits...
         if(city.length <= 0) {
             alert("Please enter a city name.");
@@ -58,14 +62,11 @@ function searchAction() {
             // if (searchHistory.length > 10) {
             //     searchHistory.shift();
             // }
+            $("#currentWeather").text("Current Weather in " + city);
             $("form").trigger("reset");
-            let savedCities = JSON.parse(window.localStorage.getItem("savedHistory")) || searchHistory;
-            searchHistory = {
-                city: city
-            };
-            savedCities.push(searchHistory);
-            window.localStorage.setItem("savedHistory", JSON.stringify(savedCities));
-            searchHistory = savedCities;
+            searchHistory.push(city);
+            window.localStorage.setItem("savedHistory", JSON.stringify(searchHistory))
+            savedCities = searchHistory;
             renderBtns();
             weatherAPI();
         }
@@ -80,13 +81,11 @@ function resetClick() {
         $("#searchHistory", ).remove();
         $("#currentWeather").remove();
     });
+    // FIX searchACTION AFTER CLEARING HISTORY!!!
 }
 
 // currentWeather Function
 function weatherAPI() {
-    let apiKey = "&appid=f6e64506bbf2ed97516451a25d139a01";
-    let weatherURL = "api.openweathermap.org/data/2.5/weather?q=";
-    let forecastURL = "api.openweathermap.org/data/2.5/forecast?q=";
     let queryCurrentURL = weatherURL + city + apiKey;
     let queryForecastURL = forecastURL + city + apiKey;
     console.log(queryCurrentURL);
@@ -95,10 +94,11 @@ function weatherAPI() {
     // Current Weather API Ajax call
     $.ajax({
         url: queryCurrentURL,
-        method: "GET"
-    }).then(function(current_data) {
+        type: "GET"
+      }).success(function(response) {
         console.log(current_data);
-    });
+    })
+}      
     
     // Forecast API Ajax call
     // $.ajax({
@@ -110,4 +110,3 @@ function weatherAPI() {
 
     // Append to HTML
 
-}
