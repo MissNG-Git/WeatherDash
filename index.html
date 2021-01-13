@@ -44,11 +44,11 @@
     <main class="mainContent container">
       <div class="contentWrapper row">
         <!-- Search Section: Form w/Label, Input & Buttons  -->
-        <section id="searchWrapper" class="search col-lg-3">
+        <div id="searchWrapper" class="search col-lg-3">
           <form id="searchForm" class="textCenter">
             <!-- Search Text -->
-            <label class="searchLabel" for="searchBox">Search by City</label>
-            <input type="text" id="searchBar" name="searchBox" class="formControl text-input" />
+            <label class="searchLabel">Search by City</label>
+            <input type="text" id="searchBar" class="formControl text-input" />
             <!-- Search Button: Magnifying Glass -->
             <button type="submit" form="searchForm" id="searchBtn" class="btn btn-info btn-block">
               Search <i class="fas fa-search"></i></button>
@@ -59,7 +59,7 @@
           <!-- Search History Buttons via JS, scrollable(?) -->
           <div id="searchHistory" class="history">
           </div>
-        </section>
+        </div>
 
         <!--  Weather Section -->
         <section id="weatherWrapper" class="weather card col-lg-9">
@@ -67,7 +67,7 @@
           <div id="currentWeather" class="current card-body">
             <h2 id="weatherHeader"></h2>
             <!-- Weather Icon -->
-            <img id="icon" class="currentIcon" src=""></span>
+            <img class="currentIcon" src="">
             <!-- Weather Date (today's) -->
             <h2 id="todayDate"></h2>
             <!-- Weather Temp, Humidity, Wind Speed, UV Index -->
@@ -78,38 +78,38 @@
 
           <!-- Weather Forecast Div -->
           <!-- 5-day forecast: Date, Icon, Temp & Humidity -->
-          <div id="forecastWrapper" class="forecast card-body">
+          <div id="forecastWeather" class="forecast card-body">
             <div id="day0" class="card-body">
               <h5 id="date0"></h5>
-              <img class="icon0"></img>
+              <img class="icon0" src="">
               <h6 class="temp0"></h6>
               <h6 class="wind0"></h6>
               <h6 class="uv0"></h6>
             </div>
             <div id="day1" class="card-body">
               <h5 id="date1"></h5>
-              <img class="icon1"></img>
+              <img class="icon1" src="">
               <h6 class="temp1"></h6>
               <h6 class="wind1"></h6>
               <h6 class="uv1"></h6>
             </div>
             <div id="day2" class="card-body">
               <h5 id="date2"></h5>
-              <img class="icon2"></img>
+              <img class="icon2" src="">
               <h6 class="temp2"></h6>
               <h6 class="wind2"></h6>
               <h6 class="uv2"></h6>
             </div>
             <div id="day3" class="card-body">
               <h5 id="date3"></h5>
-              <img class="icon3"></img>
+              <img class="icon3" src="">
               <h6 class="temp3"></h6>
               <h6 class="wind3"></h6>
               <h6 class="uv3"></h6>
             </div>
             <div id="day4" class="card-body">
               <h5 id="date4"></h5>
-              <img class="icon4"></img>
+              <img class="icon4" src="">
               <h6 class="temp4"></h6>
               <h6 class="wind4"></h6>
               <h6 class="uv4"></h6>
@@ -119,8 +119,6 @@
         
       </div>
     </main>
-
-    <hr/>
 
     <!-- FOOTER -->
     <footer class="footer">
