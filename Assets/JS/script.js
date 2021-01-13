@@ -13,14 +13,8 @@ var searchHistory = [];
 // Function calls on page load
 loadHistory();
 searchAction();
-
-// function initialise() {
-//     loadHistory();
-//     searchAction();
-//     resetClick();
-//     historyClick();
-//     weatherAPI();
-// }
+historyClick();
+resetClick();
 
 // Load localStorage data on refresh & create buttons for previous search(es)
 function loadHistory() {
@@ -34,13 +28,17 @@ function loadHistory() {
 }
 
 function renderBtns () {
+    $("#searchHistory").html("");
+    if (searchHistory == null) {
+        return;
+    }
     let cityList = [...new Set(searchHistory)];
-    console.log(cityList)
     // Loop through array, create buttons for each city & run weatherAPI when clicked
     for (let i = 0; i < cityList.length; i++) {
         let btnEl = $("<button>");
         btnEl.attr("id", "btnItems");
         btnEl.text(cityList[i].city.toUpperCase());
+        console.log(cityList[i].city)
         $("#searchHistory").append(btnEl);
         $("#btnItems").click(function(event) {
             event.preventDefault();
@@ -48,25 +46,35 @@ function renderBtns () {
             weatherAPI();
         });
     }
+    return(cityList);
 }
 
-// function searchAction() {
-//     $("#searchForm").submit(function(event) {
-//         event.preventDeault();
-//         city = $("#searchBar").val();
-//         if(city.length <= 0) {
-//             alert("Please enter a city name.");
-//         }
-//         else {
-//             let savedCities = JSON.parse(window.localStorage.getItem("savedHistory")) || searchHistory;
-//             searchHistory = {
-//                 city: city
-//             }
-//             savedCities.push(searchHistory);
-//             window.localStorage.setItem("savedHistory", JSON.stringify(savedCities));
-//         };
-//     })
-// }
+// Function for click event on searchBtn
+function searchAction() {
+    $("#searchBtn").click(function(event) {
+        event.preventDefault();
+        city = $("#searchBar").val().trim();
+        console.log(city);
+        // Change to modal if time permits...
+        if(city.length <= 0) {
+            alert("Please enter a city name.");
+        }
+        // Limit list to only show last 10 search results
+        else if (searchHistory.length > 10) {
+            searchHistory.shift();
+        }
+        else {
+            let savedCities = JSON.parse(window.localStorage.getItem("savedHistory")) || searchHistory;
+            searchHistory = {
+                city: city
+            }
+            savedCities.push(searchHistory);
+            window.localStorage.setItem("savedHistory", JSON.stringify(savedCities));
+            renderBtns();
+            weatherAPI();
+        };
+    })
+}
 
 // // "click" eventListener for buttons
 //     // Search button runs weather & forecast functions
