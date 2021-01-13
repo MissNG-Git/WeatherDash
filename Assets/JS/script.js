@@ -52,12 +52,20 @@ function renderStorage() {
     });
 }
 
-// // searchBtn click listner; preventDefault
-// $("#searchBtn").click(function(event) {
-
-//     // Fxns to request get data
-
-// });
+// searchBtn click listner; preventDefault
+$("#searchBtn").click(function(event) {
+    event.preventDefault();
+    weatherURL = "https://api.openweathermap.org/data/2.5/weather?q=" + searchBar.val() + "&units=imperial&appid=" + apiKey;
+    forecastURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + searchBar.val() + "&units=imperial&appid=" + apiKey;
+    console.log(weatherURL);
+    console.log(forecastURL);
+    // Prevent duplicates
+    $("#currentWeather").empty();
+    $("#forecastWeather").empty();
+    // Fxns to request get data
+    // getCurrent();
+    // getForecast();
+});
 
 // function getCurrent() {
 //     // Current Weather API call
