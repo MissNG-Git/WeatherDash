@@ -62,20 +62,58 @@
         </section>
 
         <!--  Weather Section -->
-        <section id="weatherWrapper" class="weather col-lg-9">
+        <section id="weatherWrapper" class="weather card col-lg-9">
           <!-- Current Weather Div: City = Search -->
-          <div id="currentWeather" class="current">
-          <!-- Weather Icon -->
-
-          <!-- Weather Date (today's) -->
-
-          <!-- Weather Temp, Humidity, Wind Speed, UV Index -->
-
+          <div id="currentWeather" class="current card-body">
+            <h2 id="weatherHeader"></h2>
+            <!-- Weather Icon -->
+            <img id="icon" class="currentIcon" src=""></span>
+            <!-- Weather Date (today's) -->
+            <h2 id="todayDate"></h2>
+            <!-- Weather Temp, Humidity, Wind Speed, UV Index -->
+            <h3 id="temp" class="currentTemp"></h3>
+            <h4 id="wind" class="currentWind"></h4>
+            <h4 id="uv" class="currentUV"></h4>
           </div>
 
           <!-- Weather Forecast Div -->
           <!-- 5-day forecast: Date, Icon, Temp & Humidity -->
-          <div id="forecastWrapper" class="forecast">
+          <div id="forecastWrapper" class="forecast card-body">
+            <div id="day0" class="card-body">
+              <h5 id="date0"></h5>
+              <img class="icon0"></img>
+              <h6 class="temp0"></h6>
+              <h6 class="wind0"></h6>
+              <h6 class="uv0"></h6>
+            </div>
+            <div id="day1" class="card-body">
+              <h5 id="date1"></h5>
+              <img class="icon1"></img>
+              <h6 class="temp1"></h6>
+              <h6 class="wind1"></h6>
+              <h6 class="uv1"></h6>
+            </div>
+            <div id="day2" class="card-body">
+              <h5 id="date2"></h5>
+              <img class="icon2"></img>
+              <h6 class="temp2"></h6>
+              <h6 class="wind2"></h6>
+              <h6 class="uv2"></h6>
+            </div>
+            <div id="day3" class="card-body">
+              <h5 id="date3"></h5>
+              <img class="icon3"></img>
+              <h6 class="temp3"></h6>
+              <h6 class="wind3"></h6>
+              <h6 class="uv3"></h6>
+            </div>
+            <div id="day4" class="card-body">
+              <h5 id="date4"></h5>
+              <img class="icon4"></img>
+              <h6 class="temp4"></h6>
+              <h6 class="wind4"></h6>
+              <h6 class="uv4"></h6>
+            </div>
           </div>
         </section>
         
