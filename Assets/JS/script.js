@@ -1,6 +1,6 @@
 var city = "";
 var apiKey = "&appid=471ac66dcee7336c8919fa741ccc6ad6";
-var weatherURL = "https://api.openweathermap.org/data/2.5//weather?q=";
+var weatherURL = "https://api.openweathermap.org/data/2.5/weather?q=";
 var forecastURL = "https://api.openweathermap.org/data/2.5/forecast?q=";
 // Array for search History?
 var searchHistory = [];
@@ -63,6 +63,9 @@ function searchAction() {
             // if (searchHistory.length > 10) {
             //     searchHistory.shift();
             // }
+            let nowDate = moment().format('LL');
+            console.log(nowDate)
+            $("#todayDate").html(nowDate);
             $("#weatherHeader").text("Current Weather in " + city);
             $("form").trigger("reset");
             // ADD IF STATEMENT FOR INPUT !== A VALID CITY!
