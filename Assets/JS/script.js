@@ -23,18 +23,34 @@ function formatDates(data) {
     return dateFormat
 }
 
-// function renderStorage() {
+function renderStorage() {
+    $("#searchHistory").empty();
 
-//     // Add value of searchBar to front of savedSearch array; splice values..?
-//     // Also place value at front of array if duplicate; maybe unshift??
+    // Add value of searchBar to front of savedSearch array
+    // Also place value at front of array if duplicate
+    if ($("#searchBar").val() != "") {
+        if (savedSearch.indexOf($("#searchBar").val()) != -1) {
+            savedSearch.splice(savedSearch.indexOf($("#searchBar").val()), 1)
+        }
+        savedSearch.unshift($("#searchBar").val());
+    }
 
-//     // Save to localStorage
+    // Save to localStorage
+    localStorage.setItem("savedSearch", savedSearch);
 
-//     // Creates historyList forLoop
+    // Creates historyList
+    for (var i = 0; i < savedSearch.length; i++) {
+        var newLi = $('<li class="list-group-item">' + savedSearch[i] + '</li>');
+        $("#searchHistory").append(newLi);
+    }
 
-//     // Click listner for list items
-
-// }
+    // Click listner for list items
+    $("li").on("click", function (event) {
+        event.preventDefault();
+        $("#searchBar").val($(event.target).text());
+        searchBtn.click();
+    });
+}
 
 // // searchBtn click listner; preventDefault
 // $("#searchBtn").click(function(event) {
