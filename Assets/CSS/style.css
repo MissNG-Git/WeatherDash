@@ -1,0 +1,79 @@
+html, body {
+    height: 100%;
+}
+
+body,
+img {
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+body {
+    background-image: url(https://image.freepik.com/free-photo/sun-cloud-background-with-pastel-colour_66899-223.jpg);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    line-height: 1;
+}
+
+button,
+img,
+.footer {
+    text-align: center;
+}
+
+.container {
+    margin-bottom: 60px;
+}
+
+img {
+    border-radius: 50px;
+    float: left;
+    height: 100%;
+    margin-right: 50px;
+    opacity: 0.9;
+    width: 30%;
+}
+
+button {
+    background-color: darkcyan;
+    border-radius: 15px;
+    color: white;
+    display: block;
+}
+
+button i:hover {
+    font-size: 20px;
+    transition: all .3s ease-in-out;
+}
+
+.footer {
+    background-color: lightgray;
+    bottom: 0;
+    color: #2e2e2e;
+    flex-shrink: 0;
+    left: 0;
+    margin-top: 15px;
+    padding-bottom: 15px;
+    padding-top: 25px;
+    position: fixed;
+    width: 100%;
+}
+
+@media screen and (max-width: 768px), screen and (max-width: 575px) {
+h1{
+    font-size: 60px !important;
+}
+
+(txt) {
+    font-size:16px;
+}
+
+img {
+    display: none;
+}
+
+(container&Btn) {
+    width: 100%;
+}
