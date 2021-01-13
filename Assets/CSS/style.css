@@ -17,14 +17,53 @@ body {
     line-height: 1;
 }
 
+
+body,
 button,
+#btnItems,
 img,
 .footer {
     text-align: center;
 }
 
-.container {
-    margin-bottom: 60px;
+header,
+#btnItems {
+    background-color: darkcyan;
+}
+
+header {
+    color: white;
+    margin-bottom: 25px;
+    padding: 15px;
+}
+
+#searchWrapper,
+#weatherWrapper {
+    background-color: lightcyan;
+    border-radius: 15px;
+    padding: 25px;
+}
+
+.searchLabel,
+#searchBar,
+#searchBtn,
+#dltBtn {
+    margin-bottom: 10px;
+}
+
+#searchHistory {
+    margin-top: 8px;
+}
+
+.searchLabel {
+    font-size: x-large;
+    font-weight: bold;
+    margin-top: 5px;
+}
+
+input,
+button {
+    width: 100%;
 }
 
 img {
@@ -36,16 +75,17 @@ img {
     width: 30%;
 }
 
-button {
-    background-color: darkcyan;
-    border-radius: 15px;
+#btnItems {
+    border-radius: 5px;
     color: white;
-    display: block;
+    margin: 5px;
+    text-transform: uppercase;
+    width: 90%;
 }
 
-button i:hover {
-    font-size: 20px;
-    transition: all .3s ease-in-out;
+#btnItems:hover {
+    background-color: darkslategrey;
+    transition: all .2s ease-in-out;
 }
 
 .footer {
