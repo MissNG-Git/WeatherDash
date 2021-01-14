@@ -1,13 +1,12 @@
 var searchBar = $("#searchBar");
 var searchBtn = $("#searchBtn");
-var searchHistory = $("#searchHistory");
 var apiKey = "471ac66dcee7336c8919fa741ccc6ad6";
 var weatherURL;
 var forecastURL;
 var savedSearch = [];
 
 var loadStorage = localStorage.getItem("savedSearch");
-if (loadStorage != null) {
+if (loadStorage !== null) {
     savedSearch = loadStorage.split(",");
 }
 var today = new Date();
@@ -17,7 +16,7 @@ var currentDate = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + tod
 function formatDates(data) {
     var dateArray = data.split("-");
     var dateFormat = dateArray[1] + "/" + dateArray[2] + "/" + dateArray[0];
-    return dateFormat
+    return dateFormat;
 }
 
 function renderStorage() {
@@ -25,9 +24,9 @@ function renderStorage() {
 
     // Add value of searchBar to front of savedSearch array
     // Also place value at front of array if duplicate
-    if ($("#searchBar").val() != "") {
+    if ($("#searchBar").val() !== "") {
         if (savedSearch.indexOf($("#searchBar").val()) != -1) {
-            savedSearch.splice(savedSearch.indexOf($("#searchBar").val()), 1)
+            savedSearch.splice(savedSearch.indexOf($("#searchBar").val()), 1);
         }
         savedSearch.unshift($("#searchBar").val());
     }
@@ -35,11 +34,11 @@ function renderStorage() {
     localStorage.setItem("savedSearch", savedSearch);
 
     for (var i = 0; i < savedSearch.length; i++) {
-        var newLi = $('<button id="btnItems">' + savedSearch[i] + '</button>');
+        var newLi = $('<button class="btnItems">' + savedSearch[i] + '</button>');
         $("#searchHistory").append(newLi);
     }
 
-    $("#btnItems").on("click", function (event) {
+    $(".btnItems").on("click", function (event) {
         event.preventDefault();
         $("#searchBar").val($(event.target).text());
         searchBtn.click();
@@ -53,7 +52,7 @@ $("#searchBtn").click(function(event) {
     
     $("#currentWeather").empty();
     $("#forecastRow").empty();
-    let city = $("#searchBar").val().trim();
+    var city = $("#searchBar").val().trim();
     if(city.length <= 0) {
         alert("Please enter a city name.");
     }
@@ -65,7 +64,7 @@ $("#searchBtn").click(function(event) {
 $("#dltBtn").click(function(event) {
     event.preventDefault();
     localStorage.removeItem("savedSearch");
-    $("#searchHistory", ).remove();
+    $("#searchHistory").remove();
     $(".weatherContainer").remove();
     location.reload();
 });
@@ -112,7 +111,7 @@ function getCurrent() {
                 '<p class="card-text">Temperature: ' + currentObject.temperature + ' °F</p>' +
                 '<p class="card-text">Humidity: ' + currentObject.humidity + '%</p>' +
                 '<p class="card-text">Wind Speed: ' + currentObject.wind + ' MPH</p>' +
-                '<p class="card-text">UV Index: <span class="badge badge-secondary ' + currentObject.uvIntensity + '">' + currentObject.uvIndex + '</span>')
+                '<p class="card-text">UV Index: <span class="badge badge-secondary ' + currentObject.uvIntensity + '">' + currentObject.uvIndex + '</span>');
             $("#currentWeather").append(currentCard);
         });
 
