@@ -17,18 +17,15 @@ body {
     line-height: 1;
 }
 
+header,
+.li.group.item {
+    background-color: darkcyan;
+}
 
 body,
 button,
-#btnItems,
-img,
 .footer {
     text-align: center;
-}
-
-header,
-#btnItems {
-    background-color: darkcyan;
 }
 
 header {
@@ -52,7 +49,7 @@ header {
 }
 
 #searchHistory {
-    margin-top: 8px;
+    margin-top: 10px;
 }
 
 .searchLabel {
@@ -66,26 +63,8 @@ button {
     width: 100%;
 }
 
-img {
-    border-radius: 50px;
-    float: left;
-    height: 100%;
-    margin-right: 50px;
-    opacity: 0.9;
-    width: 30%;
-}
-
-#btnItems {
-    border-radius: 5px;
-    color: white;
-    margin: 5px;
-    text-transform: uppercase;
-    width: 90%;
-}
-
-#btnItems:hover {
-    background-color: darkslategrey;
-    transition: all .2s ease-in-out;
+p {
+    color: black;
 }
 
 .footer {
@@ -106,7 +85,7 @@ h1{
     font-size: 60px !important;
 }
 
-(txt) {
+.mainContent{
     font-size:16px;
 }
 
@@ -114,6 +93,7 @@ img {
     display: none;
 }
 
-(container&Btn) {
+.mainContent,
+button {
     width: 100%;
-}
+}    
