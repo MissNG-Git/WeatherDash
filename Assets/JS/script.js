@@ -67,8 +67,11 @@ $("#searchBtn").click(function(event) {
         alert("Please enter a city name.");
     }
     // Fxns to request get data
-    getCurrent();
-    getForecast();
+    else {
+        $("form").trigger("reset"); 
+        getCurrent();
+        getForecast();
+    }
 });
 
 $("#dltBtn").click(function(event) {
@@ -76,6 +79,7 @@ $("#dltBtn").click(function(event) {
     localStorage.removeItem("savedSearch");
     $("#searchHistory", ).remove();
     $(".weatherContainer").remove();
+    location.reload();
 });
 
 // Reset text box = blank after search
