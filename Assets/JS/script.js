@@ -64,11 +64,20 @@ $("#searchBtn").click(function(event) {
     $("#forecastWeather").empty();
     // Fxns to request get data
     getCurrent();
-    // getForecast();
+    getForecast();
+});
+
+$("#dltBtn").click(function(event) {
+    event.preventDefault();
+    localStorage.removeItem("savedHistory");
+    $("#searchHistory", ).remove();
+    $(".weatherContainer").remove();
 });
 
 // Reset text box = blank after search
 // CSS list text to UPPERCASE
+// Fix load after clicked dltBtn
+
 function getCurrent() {
     // Current Weather API call
     $.ajax({
@@ -166,4 +175,4 @@ function getForecast() {
     });
 }
 
-renderStorage();
+renderStorage(); 
