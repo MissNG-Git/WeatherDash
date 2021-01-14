@@ -18,12 +18,13 @@ body {
 }
 
 header,
-.li.group.item {
+#btnItems {
     background-color: darkcyan;
 }
 
-body,
+#searchWrapper,
 button,
+#btnItems,
 .footer {
     text-align: center;
 }
@@ -62,6 +63,26 @@ input,
 button {
     width: 100%;
 }
+
+input,
+#btnItems {
+    text-transform: uppercase;
+}
+
+#btnItems {
+    border-radius: 5px;
+    color: white;
+    margin: 5px;
+
+    width: 90%;
+}
+
+#btnItems:hover {
+    background-color: darkslategrey;
+    transition: all .2s ease-in-out;
+}
+
+
 
 p {
     color: black;
