@@ -67,6 +67,21 @@ p {
     color: black;
 }
 
+.high{
+    color: white;
+    background-color: red;
+}
+
+.medium{
+    color: black;
+    background-color: goldenrod;
+}
+
+.low{
+    color: black;
+    background-color: lightgreen;
+}
+
 .footer {
     background-color: lightgray;
     bottom: 0;
@@ -96,4 +111,4 @@ img {
 .mainContent,
 button {
     width: 100%;
-}    
+}
