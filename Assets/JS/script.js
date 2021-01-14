@@ -52,7 +52,7 @@ $("#searchBtn").click(function(event) {
     forecastURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + searchBar.val() + "&units=imperial&appid=" + apiKey;
     
     $("#currentWeather").empty();
-    $("#forecastWeather").empty();
+    $("#forecastRow").empty();
     let city = $("#searchBar").val().trim();
     if(city.length <= 0) {
         alert("Please enter a city name.");
@@ -152,7 +152,7 @@ function getForecast() {
                 '<p>Temp: ' + forecastArray[i].temperature + '°F</p>' +
                 '<p>Humidity: ' + forecastArray[i].humidity + '%</p>' +
                 '<span></div>');
-            $("#forecastWeather").append(forecastCard);
+            $("#forecastRow").append(forecastCard);
         }
     });
 }
