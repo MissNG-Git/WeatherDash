@@ -57,7 +57,7 @@ $("#searchBtn").click(function(event) {
     if(city.length <= 0) {
         alert("Please enter a city name.");
     }
-    $("#searchBar").val("")
+    
     getCurrent();
     getForecast();
 });
