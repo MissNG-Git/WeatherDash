@@ -69,7 +69,7 @@ $("#searchBtn").click(function(event) {
 
 $("#dltBtn").click(function(event) {
     event.preventDefault();
-    localStorage.removeItem("savedHistory");
+    localStorage.removeItem("savedSearch");
     $("#searchHistory", ).remove();
     $(".weatherContainer").remove();
 });
