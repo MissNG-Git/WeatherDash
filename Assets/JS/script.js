@@ -57,7 +57,7 @@ $("#searchBtn").click(function(event) {
     if(city.length <= 0) {
         alert("Please enter a city name.");
     }
-    
+    $("#searchBar").val("")
     getCurrent();
     getForecast();
 });
@@ -69,9 +69,6 @@ $("#dltBtn").click(function(event) {
     $(".weatherContainer").remove();
     location.reload();
 });
-
-// Reset text box = blank after search
-// CSS list text to UPPERCASE
 
 function getCurrent() {
     $.ajax({
