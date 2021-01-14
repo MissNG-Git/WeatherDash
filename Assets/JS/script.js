@@ -62,6 +62,10 @@ $("#searchBtn").click(function(event) {
     // Prevent duplicates
     $("#currentWeather").empty();
     $("#forecastWeather").empty();
+    let city = $("#searchBar").val().trim();
+    if(city.length <= 0) {
+        alert("Please enter a city name.");
+    }
     // Fxns to request get data
     getCurrent();
     getForecast();
