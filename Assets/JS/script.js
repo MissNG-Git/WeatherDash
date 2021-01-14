@@ -1,4 +1,3 @@
-// Define global variables
 var searchBar = $("#searchBar");
 var searchBtn = $("#searchBtn");
 var searchHistory = $("#searchHistory");
@@ -7,16 +6,14 @@ var weatherURL;
 var forecastURL;
 var savedSearch = [];
 
-// Load localStorage data on refresh 
 var loadStorage = localStorage.getItem("savedSearch");
 if (loadStorage != null) {
     savedSearch = loadStorage.split(",");
 }
-// Variable for todays's date
 var today = new Date();
 var currentDate = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
 
-// Change format of date to Mo / Day / Yr
+// Change format of date to Mo / Day / Yr for simplicity
 function formatDates(data) {
     var dateArray = data.split("-");
     var dateFormat = dateArray[1] + "/" + dateArray[2] + "/" + dateArray[0];
@@ -35,16 +32,13 @@ function renderStorage() {
         savedSearch.unshift($("#searchBar").val());
     }
 
-    // Save to localStorage
     localStorage.setItem("savedSearch", savedSearch);
 
-    // Creates historyList
     for (var i = 0; i < savedSearch.length; i++) {
         var newLi = $('<li class="list-group-item">' + savedSearch[i] + '</li>');
         $("#searchHistory").append(newLi);
     }
 
-    // Click listner for list items
     $("li").on("click", function (event) {
         event.preventDefault();
         $("#searchBar").val($(event.target).text());
@@ -52,26 +46,20 @@ function renderStorage() {
     });
 }
 
-// searchBtn click listner; preventDefault
 $("#searchBtn").click(function(event) {
     event.preventDefault();
     weatherURL = "https://api.openweathermap.org/data/2.5/weather?q=" + searchBar.val() + "&units=imperial&appid=" + apiKey;
     forecastURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + searchBar.val() + "&units=imperial&appid=" + apiKey;
-    console.log(weatherURL);
-    console.log(forecastURL);
-    // Prevent duplicates
+    
     $("#currentWeather").empty();
     $("#forecastWeather").empty();
     let city = $("#searchBar").val().trim();
     if(city.length <= 0) {
         alert("Please enter a city name.");
     }
-    // Fxns to request get data
-    else {
-        $("form").trigger("reset"); 
-        getCurrent();
-        getForecast();
-    }
+    
+    getCurrent();
+    getForecast();
 });
 
 $("#dltBtn").click(function(event) {
@@ -84,10 +72,8 @@ $("#dltBtn").click(function(event) {
 
 // Reset text box = blank after search
 // CSS list text to UPPERCASE
-// Fix load after clicked dltBtn
 
 function getCurrent() {
-    // Current Weather API call
     $.ajax({
         url: weatherURL,
         method: "GET"
@@ -103,18 +89,11 @@ function getCurrent() {
             uvIndex: 0,
             uvIntensity: ""
         };
-        console.log(currentObject);
-        // Format object date
         currentObject.date = formatDates(currentObject.date);
-        console.log(currentObject.date);
 
-        // Call to get UV index 
         var latitude = response.coord.lat;
         var longitude = response.coord.lon;
         var uviURL = "https://api.openweathermap.org/data/2.5/uvi?lat=" + latitude + "&lon=" + longitude + "&appid=" + apiKey;
-        console.log(latitude);
-        console.log(longitude);
-        console.log(uviURL);
 
         $.ajax({
             url: uviURL,
@@ -146,16 +125,13 @@ function getCurrent() {
 
 function getForecast() {
     var forecastArray = [];
-    // Forecast Weather API call
     $.ajax({
         url: forecastURL,
         method: "GET"
     }).then(function (response) {
-        console.log(response);
-
         var forecastObject;
 
-        // forLoop to retrieve then push to forecast array
+        // Create forLoops push data to forecast array, format dates & create card elements for appending
         for (var i = 4; i < response.list.length; i += 8) {
             forecastObject = {
                 date: response.list[i].dt_txt.split(" ")[0],
@@ -166,12 +142,10 @@ function getForecast() {
             forecastArray.push(forecastObject);
         }
 
-        // forLoop to format dates for array of objects
         for (var i = 0; i < forecastArray.length; i++) {
             forecastArray[i].date = formatDates(forecastArray[i].date);
         }
 
-        // forLoop to create cards & append HTML elements for relevant forecast data
         for (var i = 0; i < forecastArray.length; i++) {
             var forecastCard = $('<div class="col-lg-2 col-sm-3 mb-1"><span class="badge badge-primary"><h5>' + forecastArray[i].date + '</h5>' +
                 '<p><img class="w-100" src="http://openweathermap.org/img/wn/' + forecastArray[i].weatherIcon + '@2x.png"></p>' +

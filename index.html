@@ -2,77 +2,43 @@
 <!DOCTYPE html>
 <html lang="en-us">
   <head>
-    <!-- META Data -->
-    <!-- META for Character Encoding -->
     <meta charset="UTF-8" />
-    <!-- META for Device Scaling -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
-    <!-- META for Browser Compatibility -->
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
 
-    <!-- Style Sheets -->
-    <!-- Link to CSS -->
     <link rel="stylesheet" type="text/css" href="Assets/CSS/normalize.css" />
     <link rel="stylesheet" type="text/css" href="Assets/CSS/style.css" />
-
-    <!-- Link to GoogleFonts -->
-        <!-- <link rel="preconnect" href="https://fonts.gstatic.com">
-        <link href="https://fonts.googleapis.com/css2?family=Sacramento&display=swap" rel="stylesheet">
-    
-        <link rel="preconnect" href="https://fonts.gstatic.com">
-        <link href="https://fonts.googleapis.com/css2?family=Emilys+Candy&display=swap" rel="stylesheet">
-
-        <link rel="preconnect" href="https://fonts.gstatic.com">
-        <link href="https://fonts.googleapis.com/css2?family=Parisienne&display=swap" rel="stylesheet">
-    -->
-    <!-- Link to Bootstrap CSS & FontAwesome -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
-    <script src="https://kit.fontawesome.com/5e88de36ed.js" crossorigin="anonymous"></script>
 
-    <!-- Webpage Title -->
     <title>MissNG Weather Dash</title>
   </head>
 
   <body>
-    <!-- Weather Data Retrive/Display-->
-    <!-- Weather Dashboard Header-->
     <header class="header1">
       <h1 class="heading1">Weather Dashboard</h1>
     </header>
 
-    <!-- Container for Divs-->
     <main class="mainContent container">
       <div class="contentWrapper row">
-        <!-- Search Section: Form w/Label, Input & Buttons  -->
+        <!-- Search Section: Form w/Label, Input & Buttons/List  -->
         <div id="searchWrapper" class="search col-lg-3">
           <form id="searchForm" class="textCenter">
-            <!-- Search Text -->
             <label class="searchLabel">Search by City</label>
             <input type="text" id="searchBar" class="formControl text-input" />
-            <!-- Search Button: Magnifying Glass -->
             <button type="submit" form="searchForm" id="searchBtn" class="btn btn-info btn-block">
               Search <i class="fas fa-search"></i></button>
-            <!-- Search Delete Button: Trash Can -->
             <button type="reset" form="searchForm" id="dltBtn" class="btn btn-danger btn-block">
              <i class="far fa-trash-alt"></i> Clear Search History</button>
           </form>
-          <!-- Search History Buttons via JS, scrollable(?) -->
+          <!-- Search History Buttons/List via JS, scrollable(?) -->
           <div id="searchHistory" class="history">
           </div>
         </div>
 
         <div class="weatherContainer">
-          <!--  Weather Section -->
           <div class="weatherWrapper row">  
-            <!-- Current Weather Div: City = Search -->
             <div id="currentWeather" class="current card col-lg-9">
-              
-              <!-- Weather Icon -->
-              
-              <!-- Weather Date (today's) -->
-              
-              <!-- Weather Temp, Humidity, Wind Speed, UV Index -->
-              
+
             </div>
           </div>
           
@@ -87,7 +53,6 @@
       </div>
     </main>
 
-    <!-- FOOTER -->
     <footer class="footer">
       <div class="foot-box">
         <div class="text-muted">
@@ -97,8 +62,8 @@
       </div>
     </footer>
 
-    <!-- Link to Script -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/5e88de36ed.js" crossorigin="anonymous"></script>
     <script src="Assets/JS/script.js"></script>
   </body>
 </html>
