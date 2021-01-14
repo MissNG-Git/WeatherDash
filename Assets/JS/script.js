@@ -63,24 +63,69 @@ $("#searchBtn").click(function(event) {
     $("#currentWeather").empty();
     $("#forecastWeather").empty();
     // Fxns to request get data
-    // getCurrent();
+    getCurrent();
     // getForecast();
 });
 
-// function getCurrent() {
-//     // Current Weather API call
+// Reset text box = blank after search
+// CSS list text to UPPERCASE
+function getCurrent() {
+    // Current Weather API call
+    $.ajax({
+        url: weatherURL,
+        method: "GET"
+    }).then(function (response) {
+        // Create object to store current weather data
+        var currentObject = {
+            location: response.name,
+            date: currentDate,
+            weatherIcon: response.weather[0].icon,
+            temperature: Math.round(response.main.temp),
+            humidity: response.main.humidity,
+            wind: response.wind.speed,
+            uvIndex: 0,
+            uvIntensity: ""
+        };
+        console.log(currentObject);
+        // Format object date
+        currentObject.date = formatDates(currentObject.date);
+        console.log(currentObject.date);
 
-//         // Create object to store current weather data
+        // Call to get UV index 
+        var latitude = response.coord.lat;
+        var longitude = response.coord.lon;
+        var uviURL = "https://api.openweathermap.org/data/2.5/uvi?lat=" + latitude + "&lon=" + longitude + "&appid=" + apiKey;
+        console.log(latitude);
+        console.log(longitude);
+        console.log(uviURL);
 
-//         // Format object date
+        $.ajax({
+            url: uviURL,
+            method: "GET"
+        }).then(function (response2) {
+            currentObject.uvIndex = response2.value;
 
-//         // Call to get UV index 
+            // Assign uvIntensity based on  uvIndex number
+            if (currentObject.uvIndex >= 8)
+                currentObject.uvIntensity = "high";
+            else if (currentObject.uvIndex < 3)
+                currentObject.uvIntensity = "low";
+            else
+                currentObject.uvIntensity = "medium";
 
-//             // Assign uvIntensity based on uvIndex number
+            // Create card & append HTML elements for current weather data
+            var currentCard = $('<div class="card"><div class="card-body"><h5 class="card-title">' + 'Current weather in ' + currentObject.location + ' (' + currentObject.date + ') ' +
+                '<span class="badge badge-primary"><img id="weather-icon" src="http://openweathermap.org/img/wn/' + currentObject.weatherIcon + '@2x.png"></span></h5>' +
+                '<p class="card-text">Temperature: ' + currentObject.temperature + ' °F</p>' +
+                '<p class="card-text">Humidity: ' + currentObject.humidity + '%</p>' +
+                '<p class="card-text">Wind Speed: ' + currentObject.wind + ' MPH</p>' +
+                '<p class="card-text">UV Index: <span class="badge badge-secondary ' + currentObject.uvIntensity + '">' + currentObject.uvIndex + '</span>')
+            $("#currentWeather").append(currentCard);
+        });
 
-//             // Create card & append HTML elements for current weather data
-
-// }
+        renderStorage();
+    });
+}
 
 // function getForecast() {
         // Array for looped forecast data?
