@@ -35,11 +35,11 @@ function renderStorage() {
     localStorage.setItem("savedSearch", savedSearch);
 
     for (var i = 0; i < savedSearch.length; i++) {
-        var newLi = $('<button id="btnItems">' + savedSearch[i] + '</button>');
+        var newLi = $('<button class="btnItems">' + savedSearch[i] + '</button>');
         $("#searchHistory").append(newLi);
     }
 
-    $("#btnItems").on("click", function (event) {
+    $(".btnItems").on("click", function (event) {
         event.preventDefault();
         $("#searchBar").val($(event.target).text());
         searchBtn.click();
