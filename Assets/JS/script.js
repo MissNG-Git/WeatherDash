@@ -105,7 +105,7 @@ function getCurrent() {
         }).then(function (response2) {
             currentObject.uvIndex = response2.value;
 
-            // Assign uvIntensity based on  uvIndex number
+            // Assign uvIntensity based on uvIndex number & style in CSS
             if (currentObject.uvIndex >= 8)
                 currentObject.uvIntensity = "high";
             else if (currentObject.uvIndex < 3)
@@ -127,20 +127,43 @@ function getCurrent() {
     });
 }
 
-// function getForecast() {
-        // Array for looped forecast data?
+function getForecast() {
+    var forecastArray = [];
+    // Forecast Weather API call
+    $.ajax({
+        url: forecastURL,
+        method: "GET"
+    }).then(function (response) {
+        console.log(response);
 
-//      // Forecast Weather API call
+        var forecastObject;
 
-//         // forLoop to retrieve then push to forecast array
+        // forLoop to retrieve then push to forecast array
+        for (var i = 4; i < response.list.length; i += 8) {
+            forecastObject = {
+                date: response.list[i].dt_txt.split(" ")[0],
+                weatherIcon: response.list[i].weather[0].icon,
+                temperature: Math.round(response.list[i].main.temp),
+                humidity: response.list[i].main.humidity
+            };
+            forecastArray.push(forecastObject);
+        }
 
-//         // forLoop to format dates for array of objects
+        // forLoop to format dates for array of objects
+        for (var i = 0; i < forecastArray.length; i++) {
+            forecastArray[i].date = formatDates(forecastArray[i].date);
+        }
 
-//         // forLoop to create cards & append HTML elements for relevant forecast data
-
-// }
-
-// Run search on pressing Enter
-
+        // forLoop to create cards & append HTML elements for relevant forecast data
+        for (var i = 0; i < forecastArray.length; i++) {
+            var forecastCard = $('<div class="col-lg-2 col-sm-3 mb-1"><span class="badge badge-primary"><h5>' + forecastArray[i].date + '</h5>' +
+                '<p><img class="w-100" src="http://openweathermap.org/img/wn/' + forecastArray[i].weatherIcon + '@2x.png"></p>' +
+                '<p>Temp: ' + forecastArray[i].temperature + '°F</p>' +
+                '<p>Humidity: ' + forecastArray[i].humidity + '%</p>' +
+                '<span></div>');
+            $("#forecastWeather").append(forecastCard);
+        }
+    });
+}
 
 renderStorage();
