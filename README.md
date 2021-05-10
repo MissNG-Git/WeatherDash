@@ -1,6 +1,5 @@
 # 06 Server-Side APIs: Weather Dashboard
 
-
 ⋘ ──── ∗⋅◦∘◈\[[MissNG Weather Dash](https://missng-git.github.io/WeatherDash/)\]◈∘◦⋅∗ ──── ⋙
 
 Using the [OpenWeather API](https://openweathermap.org/api) to retrieve weather data for cities, I have built a weather dashboard that will run in the browser and feature dynamically updated HTML and CSS, as well as utilising persistent data stored in a user's `localStorage`.
@@ -17,7 +16,7 @@ Using the [OpenWeather API](https://openweathermap.org/api) to retrieve weather 
 
 The following image demonstrates the application functionality:
 
-![weather dashboard demo](./Assets/IMGs/06-server-side-apis-homework-demo.png)
+![weather dashboard demo](./Assets/IMGs/screenshot.PNG)
 
 ### ≫ ──── ≪•◦ Overview of Code Functionality ◦•≫ ──── ≪
 
@@ -37,22 +36,23 @@ The following image demonstrates the application functionality:
 
 ### ≫ ──── ≪•◦ Usability ◦•≫ ──── ≪
 
-* Click into text box of the "Search City or Postcode" section on the left of dashboard
+- Click into text box of the "Search City or Postcode" section on the left of dashboard
 
-* Click on the magnifying glass (🔎) or press 'Enter' to search for the desired city
-**Note:** _Each city you search for will be listed in your search history under the search section_
+- Click on the magnifying glass (🔎) or press 'Enter' to search for the desired city
+  **Note:** _Each city you search for will be listed in your search history under the search section_
 
-* View the current weather in the top section of the weather display and the 5-day forecast in the lower section; 
-==> Relevant information displayed will include:
->1. City Name
->2. Date
->3. Icon representation of weather conditions
->4. Temperature
->5. Humidity
->6. Wind Speed
->7. UV Index, color-coded:
->\+\+ **GREEN** for *Favorable* conditions
->\+\+ **YELLOW** for *Moderate* conditions
->\+\+ **RED** for *Severe* conditions
+- View the current weather in the top section of the weather display and the 5-day forecast in the lower section;
+  ==> Relevant information displayed will include:
 
-* Click on a city in your search history to review that city's information again 🌞
+  > 1.  City Name
+  > 2.  Date
+  > 3.  Icon representation of weather conditions
+  > 4.  Temperature
+  > 5.  Humidity
+  > 6.  Wind Speed
+  > 7.  UV Index, color-coded:
+  >     \+\+ **GREEN** for _Favorable_ conditions
+  >     \+\+ **YELLOW** for _Moderate_ conditions
+  >     \+\+ **RED** for _Severe_ conditions
+
+- Click on a city in your search history to review that city's information again 🌞
